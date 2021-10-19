@@ -1,0 +1,100 @@
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+    1. Redistributions of source code must retain the above copyright notice,
+       this list of conditions and the following disclaimer.
+
+    2. Redistributions in binary form must reproduce the above copyright
+       notice, this list of conditions and the following disclaimer in the
+       documentation and/or other materials provided with the distribution.
+
+    3. Neither the name of the project nor the names of its contributors may
+       be used to endorse or promote products derived from this software without
+       specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Description: ============================
+        Simon: Simple MongoDB Models
+        ============================
+        
+        .. image:: https://secure.travis-ci.org/dirn/Simon.png?branch=develop
+           :target: http://travis-ci.org/dirn/Simon
+        
+        
+        Note About Releases
+        ===================
+        
+        Simon is not yet considered production-ready. While I will do my best to
+        maintain backward compatibility between now and version 1.0, I cannot
+        guarantee it will happen.
+        
+        The original development releases may eventually be pulled from Read the
+        Docs and PyPI. You are encouraged to keep your version up-to-date until
+        the release of 1.0 to avoid running into problems.
+        
+        
+        Getting Started
+        ===============
+        
+        Define a model::
+        
+            from simon import Model
+        
+            class User(Model):
+                """A model to represent users"""
+        
+        Connect to a database::
+        
+            from simon.connection import connect
+        
+            connect('localhost', name='simon')
+        
+        And start using it::
+        
+            User.create(name='Simon')
+        
+            user = User.get(name='Simon')
+            user.email = 'simon@example.com'
+            user.save()
+        
+        Full documentation can be found on `Read the Docs`_.
+        
+        .. _Read the Docs: http://simon.readthedocs.org
+        
+        
+        Installation
+        ============
+        
+        Installing Simon is easy::
+        
+            pip install Simon
+        
+        or download the source and run::
+        
+            python setup.py install
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
