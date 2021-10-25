@@ -3,7 +3,7 @@ from flask import make_response
 from flask import request
 
 import requests
-api_url = "http://127.0.0.1:5000/azon/api/products"
+api_url = "https://rest-api0798.herokuapp.com"
 response = requests.get(api_url)
 product = response.json()['products']
 

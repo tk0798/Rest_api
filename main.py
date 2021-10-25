@@ -56,7 +56,7 @@ products = [
 app = Flask(__name__)
 
 
-@app.route('/azon/api/products', methods=['GET'])
+@app.route('/', methods=['GET'])
 def get_products():
     return jsonify({'products': products})
 # import pyodbc
@@ -70,7 +70,7 @@ def get_products():
 # imlec = db.cursor()
 
 
-@app.route('/azon/api/products/<int:product_id>', methods=['GET'])
+@app.route('/<int:product_id>', methods=['GET'])
 def get_product(product_id):
     product = [product for product in products if product['id']==product_id]
 
@@ -101,7 +101,7 @@ def get_product(product_id):
     return jsonify({'product': product})
 
 
-@app.route('/azon/api/products/', methods=['POST'])
+@app.route('/', methods=['POST'])
 def create_product():
     newProduct = {
         'id': request.json['id'],
@@ -122,7 +122,7 @@ def create_product():
     return jsonify({'product': newProduct}), 201
 
 
-@app.route('/azon/api/products/<int:product_id>', methods=['DELETE'])
+@app.route('/<int:product_id>', methods=['DELETE'])
 def delete_product(product_id):
     product = [product for product in products if product['id'] == product_id]
     if len(product) == 0:
