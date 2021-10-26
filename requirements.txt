@@ -65,4 +65,3 @@ Werkzeug==2.0.2
 whatsappapi==2.6.0
 wsproto==1.0.0
 dj-database-url
-psycopg2-binary
