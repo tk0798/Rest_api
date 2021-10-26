@@ -2,7 +2,7 @@ import psycopg2
 def insert_database(kullanici_id, model_id, model_adi, longitude, latitude, toplam_adim, kalori, oksijen, nabiz, seri_no, yazilim_versiyon, tarih):
     try:
         connection = psycopg2.connect(user = "postgres",
-                          password = "**********",
+                          password = "1998*k2005",
                           host = "localhost",
                           port = "5432",
                           database = "deneme")

@@ -53,6 +53,10 @@ products = [
 
 app = Flask(__name__)
 
+@app.route('/')
+def home():
+    return jsonify({'products': products})
+
 
 @app.route('/azon/api/products', methods=['GET'])
 def get_products():
