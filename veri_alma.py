@@ -1,6 +1,6 @@
 import requests
 import postgreSQL
-api_url = "http://127.0.0.1:5000/azon/api/products"
+api_url = "http://rest-api0798.herokuapp.com/azon/api/products"
 response = requests.get(api_url)
 product = response.json()['products']
 

@@ -15,7 +15,7 @@ products = [
         'yazilim_versiyon': 'v1',
         'seri_no': 12345678910,
         'tarih': '2021-10-18',
-        # 'kontrol':'456654'
+        'kontrol':'456654'
     },
     {
         'id': 2,
@@ -70,6 +70,7 @@ def get_product(product_id):
     for i in range(len(product)):
         print("product id :",product[i]['id'])
         print("product model_id :", product[i]['model_id'])
+        print("product model_adi :", product[i]['model_adi'])
         print("product longitude :", product[i]['longitude'])
         print("product latitude :", product[i]['latitude'])
         print("product toplam_adim :", product[i]['toplam_adim'])
@@ -90,6 +91,7 @@ def create_product():
     newProduct = {
         'id': request.json['id'],
         'model_id': request.json['model_id'],
+        'model_adi': request.json['model_adi'],
         'longitude': request.json['longitude'],
         'latitude': request.json['latitude'],
         'kullanici_id': request.json.get('kullanici_id'),
