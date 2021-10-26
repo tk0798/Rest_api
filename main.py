@@ -1,55 +1,6 @@
 from flask import Flask, jsonify
 from flask import request
-products = [
-    {
-        'id': 1,
-        'model_id': 1,
-        'model_adi': '04.00.006',
-        'longitude': 35421585,
-        'latitude': 38543869,
-        'toplam_adim':55,
-        'kalori':19,
-        'oksijen': 96,
-        'nabiz': 98,
-        'kullanici_id': 12312564,
-        'yazilim_versiyon': 'v1',
-        'seri_no': 12345678910,
-        'tarih': '2021-10-18',
-        'kontrol':'456654'
-    },
-    {
-        'id': 2,
-        'model_id': 1,
-        'model_adi': '04.00.006',
-        'longitude': 35429371,
-        'latitude': 38543868,
-        'toplam_adim':75,
-        'kalori':20,
-        'oksijen': 96,
-        'nabiz': 95,
-        'kullanici_id': 12312564,
-        'yazilim_versiyon': 'v1',
-        'seri_no': 12345678910,
-        'tarih': '2021-10-18',
-        'kontrol':'456654'
-    },
-    {
-        'id': 3,
-        'model_id': 2,
-        'model_adi': '04.00.002',
-        'longitude': 35421581,
-        'latitude': 38548167,
-        'toplam_adim':30,
-        'kalori':10,
-        'oksijen': '94',
-        'nabiz': 97,
-        'kullanici_id': 98745632,
-        'yazilim_versiyon': 'v2',
-        'seri_no': 10987654321,
-        'tarih': '2021-10-18',
-        'kontrol':'456654'
-    }
-]
+products = []
 
 app = Flask(__name__)
 
