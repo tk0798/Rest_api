@@ -155,7 +155,7 @@ def list_database():
                       "kalori:": liste[i][5],
                       "oksijen": liste[i][6], "nabiz": liste[i][7], "seri_no": liste[i][8],
                       "yazilim_versiyon": liste[i][9],
-                      "tarih": liste[i][10]}
+                      "tarih": str(liste[i][10])}
             y = json.dumps(jsonum)
             x = x + y
             print("sonuc :", x)
