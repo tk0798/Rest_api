@@ -39,37 +39,48 @@ import psycopg2
 
 # DATABASE_URL = os.environ['dfur5u5oon6kmi']
 
-db = psycopg2.connect('postgres://arpoydbrxhqzfv:444c6c5f46296d3a9c9843a2be3ae4c556171473dababd686b868822b080a31b@ec2-54-195-246-55.eu-west-1.compute.amazonaws.com:5432/dfur5u5oon6kmi', sslmode='require')
 
-imlec = db.cursor()
-
-print( db.get_dsn_parameters() )
 def veritabani_olusturma():
-    komut_CREATE = """ CREATE TABLE IF NOT EXISTS public.saat_veri
-    (
-        kullanici_id integer,
-        model_id integer,
-        longitude double precision,
-        latitude double precision,
-        toplam_adim integer,
-        kalori integer,
-        oksijen integer,
-        nabiz integer,
-        seri_no bigint,
-        yazilim_versiyon text COLLATE pg_catalog."default",
-        tarih date,
-        id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
-        model_adi text COLLATE pg_catalog."default",
-        CONSTRAINT saat_veri_pkey PRIMARY KEY (id)
-    );
-                    """
+    try:
+        db = psycopg2.connect(
+            'postgres://arpoydbrxhqzfv:444c6c5f46296d3a9c9843a2be3ae4c556171473dababd686b868822b080a31b@ec2-54-195-246-55.eu-west-1.compute.amazonaws.com:5432/dfur5u5oon6kmi',
+            sslmode='require')
 
-    imlec.execute(komut_CREATE)
-    db.commit()
+        imlec = db.cursor()
 
-    imlec.close()
-    db.close()
-    print("çalıştı")
+        print(db.get_dsn_parameters())
+        komut_CREATE = """ CREATE TABLE IF NOT EXISTS public.saat_veri
+        (
+            kullanici_id integer,
+            model_id integer,
+            longitude double precision,
+            latitude double precision,
+            toplam_adim integer,
+            kalori integer,
+            oksijen integer,
+            nabiz integer,
+            seri_no bigint,
+            yazilim_versiyon text COLLATE pg_catalog."default",
+            tarih date,
+            id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+            model_adi text COLLATE pg_catalog."default",
+            CONSTRAINT saat_veri_pkey PRIMARY KEY (id)
+        );
+                        """
+
+        imlec.execute(komut_CREATE)
+        db.commit()
+
+        print("çalıştı")
+    except (Exception, psycopg2.Error) as error:
+        print("Hata oldu", error)
+
+    finally:
+        # closing database connection.
+        if db:
+            imlec.close()
+            db.close()
+            print("Bağlantı kapandı")
 
 def insert_database(kullanici_id, model_id, model_adi, longitude, latitude, toplam_adim, kalori, oksijen, nabiz, seri_no, yazilim_versiyon, tarih):
     try:
@@ -135,9 +146,8 @@ def list_database():
         db.commit()
         liste = cursor_list.fetchall()
         print("liste :",liste)
-        return liste
         for i in range(len(liste)):
-            ("kullanici_id:", liste[i][0], " | ", "model_id:", liste[i][1], " | ", "model_adi:", liste[i][12], " | ", "longitude:", liste[i][2], " | ", "latitude:", liste[i][3], " | ", "toplam_adim:", liste[i][4], " | ", "kalori:", liste[i][5], " | ", "oksijen:", liste[i][6], " | ", "nabiz:", liste[i][7], " | ", "seri_no:", liste[i][8], " | ", "yazilim_versiyon:", liste[i][9], " | ", "tarih:", liste[i][10], " | ")    #burda kaldın
+            print("kullanici_id:", liste[i][0], " | ", "model_id:", liste[i][1], " | ", "model_adi:", liste[i][12], " | ", "longitude:", liste[i][2], " | ", "latitude:", liste[i][3], " | ", "toplam_adim:", liste[i][4], " | ", "kalori:", liste[i][5], " | ", "oksijen:", liste[i][6], " | ", "nabiz:", liste[i][7], " | ", "seri_no:", liste[i][8], " | ", "yazilim_versiyon:", liste[i][9], " | ", "tarih:", liste[i][10], " | ")    #burda kaldın
     except (Exception, psycopg2.Error) as error:
         print("Hata oldu", error)
 

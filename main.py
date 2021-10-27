@@ -1,6 +1,5 @@
 from flask import Flask, jsonify
 from flask import request
-import postgreSQL
 products = []
 
 app = Flask(__name__)
@@ -12,8 +11,7 @@ def home():
 
 @app.route('/azon/api/products', methods=['GET'])
 def get_products():
-    sonuc = postgreSQL.list_database()
-    return sonuc
+    return jsonify({'products': products})
 
 
 @app.route('/azon/api/products/<int:product_id>', methods=['GET'])
