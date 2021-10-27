@@ -135,8 +135,9 @@ def list_database():
         db.commit()
         liste = cursor_list.fetchall()
         print("liste :",liste)
+        return liste
         for i in range(len(liste)):
-            print("kullanici_id:", liste[i][0], " | ", "model_id:", liste[i][1], " | ", "model_adi:", liste[i][12], " | ", "longitude:", liste[i][2], " | ", "latitude:", liste[i][3], " | ", "toplam_adim:", liste[i][4], " | ", "kalori:", liste[i][5], " | ", "oksijen:", liste[i][6], " | ", "nabiz:", liste[i][7], " | ", "seri_no:", liste[i][8], " | ", "yazilim_versiyon:", liste[i][9], " | ", "tarih:", liste[i][10], " | ")    #burda kaldın
+            ("kullanici_id:", liste[i][0], " | ", "model_id:", liste[i][1], " | ", "model_adi:", liste[i][12], " | ", "longitude:", liste[i][2], " | ", "latitude:", liste[i][3], " | ", "toplam_adim:", liste[i][4], " | ", "kalori:", liste[i][5], " | ", "oksijen:", liste[i][6], " | ", "nabiz:", liste[i][7], " | ", "seri_no:", liste[i][8], " | ", "yazilim_versiyon:", liste[i][9], " | ", "tarih:", liste[i][10], " | ")    #burda kaldın
     except (Exception, psycopg2.Error) as error:
         print("Hata oldu", error)
 
