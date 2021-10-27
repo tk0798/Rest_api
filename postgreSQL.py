@@ -150,7 +150,7 @@ def list_database():
         x = {}
         x = json.dumps(x)
         for i in range(len(liste)):
-            jsonum = {"kullanici_id:", liste[i][0], " | ", "model_id:", liste[i][1], " | ", "model_adi:", liste[i][12], " | ", "longitude:", liste[i][2], " | ", "latitude:", liste[i][3], " | ", "toplam_adim:", liste[i][4], " | ", "kalori:", liste[i][5], " | ", "oksijen:", liste[i][6], " | ", "nabiz:", liste[i][7], " | ", "seri_no:", liste[i][8], " | ", "yazilim_versiyon:", liste[i][9], " | ", "tarih:", liste[i][10], " | "}   #burda kaldın
+            jsonum = {"kullanici_id": liste[i][0], "model_id": liste[i][1],"model_adi": liste[i][12],"longitude:": liste[i][2], "latitude": liste[i][3],"toplam_adim":liste[i][4], "kalori:":liste[i][5], "oksijen": liste[i][6],"nabiz": liste[i][7],"seri_no":liste[i][8],"yazilim_versiyon": liste[i][9], "tarih": liste[i][10]}   #burda kaldın
             y = json.dumps(jsonum)
             sonuc = x+y
         return sonuc
