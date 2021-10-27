@@ -31,7 +31,7 @@
 
 
 #### Herokudaki postgresql'e bağlanma
-
+import json
 import os
 
 
@@ -136,7 +136,6 @@ def select_database():
 
 def list_database():
     try:
-        from flask import Flask, jsonify
         db = psycopg2.connect(
             'postgres://arpoydbrxhqzfv:444c6c5f46296d3a9c9843a2be3ae4c556171473dababd686b868822b080a31b@ec2-54-195-246-55.eu-west-1.compute.amazonaws.com:5432/dfur5u5oon6kmi',
             sslmode='require')
@@ -147,10 +146,8 @@ def list_database():
         db.commit()
         liste = cursor_list.fetchall()
         print("liste :",liste)
-        json_format = {}
         for i in range(len(liste)):
-            json_format =json_format + jsonify("kullanici_id:", liste[i][0], " | ", "model_id:", liste[i][1], " | ", "model_adi:", liste[i][12], " | ", "longitude:", liste[i][2], " | ", "latitude:", liste[i][3], " | ", "toplam_adim:", liste[i][4], " | ", "kalori:", liste[i][5], " | ", "oksijen:", liste[i][6], " | ", "nabiz:", liste[i][7], " | ", "seri_no:", liste[i][8], " | ", "yazilim_versiyon:", liste[i][9], " | ", "tarih:", liste[i][10], " | ")    #burda kaldın
-            print("json_format :",json_format)
+            print(json.dumps("kullanici_id:", liste[i][0], " | ", "model_id:", liste[i][1], " | ", "model_adi:", liste[i][12], " | ", "longitude:", liste[i][2], " | ", "latitude:", liste[i][3], " | ", "toplam_adim:", liste[i][4], " | ", "kalori:", liste[i][5], " | ", "oksijen:", liste[i][6], " | ", "nabiz:", liste[i][7], " | ", "seri_no:", liste[i][8], " | ", "yazilim_versiyon:", liste[i][9], " | ", "tarih:", liste[i][10], " | "))    #burda kaldın
         return liste
     except (Exception, psycopg2.Error) as error:
         print("Hata oldu", error)
