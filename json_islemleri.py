@@ -21,9 +21,11 @@ def list_database():
                   "longitude:": liste[i][2], "latitude": liste[i][3], "toplam_adim": liste[i][4], "kalori:": liste[i][5],
                   "oksijen": liste[i][6], "nabiz": liste[i][7], "seri_no": liste[i][8], "yazilim_versiyon": liste[i][9],
                   "tarih": liste[i][10]}
-        y = json.dumps(jsonum)
-        x.append(y)
-        # print("sonuc :",x)
+        print("jsonum :", jsonum)
+        print("jsonum 2 :",jsonum['model_id'])
+
+        x.append(jsonum)
+    print("model_adi :",x[0]['model_adi'])
     print("tüm sonuc :",{"products":x})
     return {"products":x}
 

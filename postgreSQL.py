@@ -1,32 +1,32 @@
-# import psycopg2
-# def insert_database(kullanici_id, model_id, model_adi, longitude, latitude, toplam_adim, kalori, oksijen, nabiz, seri_no, yazilim_versiyon, tarih):
-#
-#     print("buraya kadar girdi")
-#     try:
-#         connection = psycopg2.connect(user = "postgres",
-#                           password = "1998*k2005",
-#                           host = "localhost",
-#                           port = "5432",
-#                           database = "deneme")
-#         cursor = connection.cursor()
-#
-#         postgres_insert_query = """ INSERT INTO saat_veri (kullanici_id, model_id, model_adi, longitude, latitude, toplam_adim, kalori, oksijen, nabiz, seri_no, yazilim_versiyon, tarih) values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
-#         record_to_insert = (kullanici_id, model_id, model_adi, longitude, latitude, toplam_adim, kalori, oksijen, nabiz, seri_no, yazilim_versiyon, tarih)
-#         cursor.execute(postgres_insert_query,record_to_insert)
-#
-#         connection.commit()
-#         count = cursor.rowcount
-#         print(count, "Kaydedildi")
-#
-#     except (Exception, psycopg2.Error) as error:
-#         print("Hata oldu", error)
-#
-#     finally:
-#         # closing database connection.
-#         if connection:
-#             cursor.close()
-#             connection.close()
-#             print("Bağlantı kapandı")
+import psycopg2
+def insert_local_database(kullanici_id, model_id, model_adi, longitude, latitude, toplam_adim, kalori, oksijen, nabiz, seri_no, yazilim_versiyon, tarih):
+
+    print("buraya kadar girdi")
+    try:
+        connection = psycopg2.connect(user = "postgres",
+                          password = "1998*k2005",
+                          host = "localhost",
+                          port = "5432",
+                          database = "deneme")
+        cursor = connection.cursor()
+
+        postgres_insert_query = """ INSERT INTO saat_veri (kullanici_id, model_id, model_adi, longitude, latitude, toplam_adim, kalori, oksijen, nabiz, seri_no, yazilim_versiyon, tarih) values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+        record_to_insert = (kullanici_id, model_id, model_adi, longitude, latitude, toplam_adim, kalori, oksijen, nabiz, seri_no, yazilim_versiyon, tarih)
+        cursor.execute(postgres_insert_query,record_to_insert)
+
+        connection.commit()
+        count = cursor.rowcount
+        print(count, "Kaydedildi")
+
+    except (Exception, psycopg2.Error) as error:
+        print("Hata oldu", error)
+
+    finally:
+        # closing database connection.
+        if connection:
+            cursor.close()
+            connection.close()
+            print("Bağlantı kapandı")
 
 
 
@@ -156,8 +156,7 @@ def list_database():
                       "oksijen": liste[i][6], "nabiz": liste[i][7], "seri_no": liste[i][8],
                       "yazilim_versiyon": liste[i][9],
                       "tarih": str(liste[i][10])}
-            y = json.dumps(jsonum)
-            x.append(y)
+            x.append(jsonum)
             print("sonuc :", x)
         print("tüm sonuc :", {"products":x})
         return {"products":x}
