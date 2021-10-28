@@ -15,7 +15,7 @@ def home():
 @app.route('/azon/api/products', methods=['GET'])
 def get_products():
     sonuc = postgreSQL.list_database()
-    return jsonify({'products': sonuc})
+    return sonuc
 
 
 @app.route('/azon/api/products/<int:product_id>', methods=['GET'])
