@@ -157,7 +157,7 @@ def list_database():
                       "yazilim_versiyon": liste[i][9],
                       "tarih": str(liste[i][10])}
             y = json.dumps(jsonum)
-            x = x + y
+            x = x +",\n"+ y
             print("sonuc :", x)
         print("tüm sonuc :", x)
         return x
