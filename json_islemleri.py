@@ -22,10 +22,10 @@ def list_database():
                   "oksijen": liste[i][6], "nabiz": liste[i][7], "seri_no": liste[i][8], "yazilim_versiyon": liste[i][9],
                   "tarih": liste[i][10]}
         y = json.dumps(jsonum)
-        x = x +",\n"+ y
-        print("sonuc :",x)
-    print("tüm sonuc :",x)
-    return x
+        x = x +","+ y
+        # print("sonuc :",x)
+    print("tüm sonuc :",{"products":x})
+    return {x}
 
 
 list_database()
