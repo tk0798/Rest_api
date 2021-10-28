@@ -151,14 +151,14 @@ def list_database():
 
         for i in range(len(liste)):
             jsonum = {"kullanici_id": liste[i][0], "model_id": liste[i][1], "model_adi": liste[i][12],
-                      "longitude:": liste[i][2], "latitude": liste[i][3], "toplam_adim": liste[i][4],
-                      "kalori:": liste[i][5],
+                      "longitude": liste[i][2], "latitude": liste[i][3], "toplam_adim": liste[i][4],
+                      "kalori": liste[i][5],
                       "oksijen": liste[i][6], "nabiz": liste[i][7], "seri_no": liste[i][8],
                       "yazilim_versiyon": liste[i][9],
                       "tarih": str(liste[i][10])}
             x.append(jsonum)
-            print("sonuc :", x)
-        print("tüm sonuc :", {"products":x})
+        print("model_adi :", x[0]['model_adi'])
+        print("tüm sonuc :", {"products": x})   #kontroller kaldı
         return {"products":x}
     except (Exception, psycopg2.Error) as error:
         print("Hata oldu", error)
@@ -180,7 +180,7 @@ def delete_database(kullanici_id):
         cursor = db.cursor()
 
         postgres_delete_query = """DELETE FROM saat_veri WHERE kullanici_id=%s"""
-        record_to_delete = (kullanici_id)
+        record_to_delete = (kullanici_id,)
         cursor.execute(postgres_delete_query,record_to_delete)
 
         db.commit()
@@ -196,6 +196,40 @@ def delete_database(kullanici_id):
             cursor.close()
             db.close()
             print("Bağlantı kapandı")
+
+
+
+def delete_local_database(kullanici_id):
+    try:
+        db = psycopg2.connect(user="postgres",
+                                      password="1998*k2005",
+                                      host="localhost",
+                                      port="5432",
+                                      database="deneme"
+                              )
+
+        cursor = db.cursor()
+
+        postgres_delete_query = """DELETE FROM saat_veri WHERE id=%s"""
+        record_to_delete = (kullanici_id,)
+        cursor.execute(postgres_delete_query,record_to_delete)
+
+        db.commit()
+        count = cursor.rowcount
+        print(count, "Veritabanından silindi")
+
+    except (Exception, psycopg2.Error) as error:
+        print("Hata oldu", error)
+
+    finally:
+        # closing database connection.
+        if db:
+            cursor.close()
+            db.close()
+            print("Bağlantı kapandı")
+
+
+
 ##model adı konusunda felan sıkıntı var veri çekiliyor ama tam doğru değil
 
 
