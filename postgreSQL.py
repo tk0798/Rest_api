@@ -147,8 +147,8 @@ def list_database():
         db.commit()
         liste = cursor_list.fetchall()
         print("liste :",liste)
-        x = {}
-        x = json.dumps(x)
+        x = []
+
         for i in range(len(liste)):
             jsonum = {"kullanici_id": liste[i][0], "model_id": liste[i][1], "model_adi": liste[i][12],
                       "longitude:": liste[i][2], "latitude": liste[i][3], "toplam_adim": liste[i][4],
@@ -157,10 +157,10 @@ def list_database():
                       "yazilim_versiyon": liste[i][9],
                       "tarih": str(liste[i][10])}
             y = json.dumps(jsonum)
-            x = x +",\n"+ y
+            x.append(y)
             print("sonuc :", x)
-        print("tüm sonuc :", x)
-        return x
+        print("tüm sonuc :", {"products":x})
+        return {"products":x}
     except (Exception, psycopg2.Error) as error:
         print("Hata oldu", error)
 
