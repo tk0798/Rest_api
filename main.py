@@ -26,7 +26,8 @@ def get_product(product_id):
     print("sonuc['products'][0] :",sonuc['products'][0])
     print("sonuc['products'][0]['kullanici_id'] :",sonuc['products'][0]['kullanici_id'])
     for productss in sonuc['products']:
-        print("girdi")
+        print("productss :",productss)
+        print("type(productss) :",type(productss))
         if int(sonuc['products'][productss]['kullanici_id'])==int(product_id):
 
             print("product id :",sonuc['products']['id'])
