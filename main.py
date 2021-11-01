@@ -28,7 +28,7 @@ def get_product(product_id):
     productss = [productss for productss in sonuc['products'] if int(productss['kullanici_id'])==int(product_id)]
     print("productss :",productss)
     print("type(productss) :",type(productss))
-    print("productss['kullanici_id'] :",productss['kullanici_id'])
+    print("productss['kullanici_id'] :",int(productss[0]['kullanici_id']))
     print("int(product_id) :",int(product_id))
     print("len(productss) :",len(productss))
     if len(productss) == 0:
