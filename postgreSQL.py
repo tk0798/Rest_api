@@ -4,7 +4,7 @@ def insert_local_database(kullanici_id, model_id, model_adi, longitude, latitude
     print("buraya kadar girdi")
     try:
         connection = psycopg2.connect(user = "postgres",
-                          password = "şifre",
+                          password = "1998*k2005",
                           host = "localhost",
                           port = "5432",
                           database = "deneme")
@@ -198,11 +198,36 @@ def delete_database(kullanici_id):
             print("Bağlantı kapandı")
 
 
+def delete_all_row_database():
+    try:
+        db = psycopg2.connect(
+            'postgres://arpoydbrxhqzfv:444c6c5f46296d3a9c9843a2be3ae4c556171473dababd686b868822b080a31b@ec2-54-195-246-55.eu-west-1.compute.amazonaws.com:5432/dfur5u5oon6kmi',
+            sslmode='require')
+
+        cursor = db.cursor()
+
+        postgres_delete_query = """truncate table saat_veri"""
+        cursor.execute(postgres_delete_query)
+
+        db.commit()
+        count = cursor.rowcount
+        print(count, "Veritabanındaki tüm satırlar silindi")
+
+    except (Exception, psycopg2.Error) as error:
+        print("Hata oldu. Tüm satırlar silinemedi", error)
+
+    finally:
+        # closing database connection.
+        if db:
+            cursor.close()
+            db.close()
+            print("Bağlantı kapandı")
+
 
 def delete_local_database(kullanici_id):
     try:
         db = psycopg2.connect(user="postgres",
-                                      password="şifre",
+                                      password="1998*k2005",
                                       host="localhost",
                                       port="5432",
                                       database="deneme"

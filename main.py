@@ -21,7 +21,8 @@ def get_products():
 @app.route('/azon/api/products/<int:product_id>', methods=['GET'])
 def get_product(product_id):
     #aktif değil
-    product = [product for product in products if product['id']==product_id]
+    sonuc = postgreSQL.list_database()
+    product = [product for product in sonuc if product['id']==product_id]
 
     for i in range(len(product)):
         print("product id :",product[i]['id'])

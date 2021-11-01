@@ -1,7 +1,7 @@
 import requests
 import postgreSQL
 
-kullanici_id=985632147
+kullanici_id=156
 model_id=5
 model_adi='04.00.166'
 longitude=35.21581
