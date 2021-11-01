@@ -28,7 +28,7 @@ def get_product(product_id):
     for productss in sonuc['products']:
         print("productss :",productss)
         print("type(productss) :",type(productss))
-        print("[productss]['kullanici_id'] :",productss['kullanici_id'])
+        print("productss['kullanici_id'] :",productss['kullanici_id'])
         print("int(product_id) :",int(product_id))
         if int(productss['kullanici_id'])==int(product_id):
 
@@ -46,9 +46,9 @@ def get_product(product_id):
             print("product yazilim_versiyon :", sonuc['products']['yazilim_versiyon'])
             print("product tarih :", sonuc['products']['tarih'])
 
-    if len(sonuc['products'][productss]) == 0:
+    if len(productss['kullanici_id']) == 0:
         return jsonify({'product': 'Not found'}), 404
-    return jsonify({'product': sonuc['products'][productss]})
+    return jsonify({'product': productss})
 
 @app.route('/azon/api/products/', methods=['POST'])
 def create_product():
