@@ -20,7 +20,7 @@ def get_products():
 
 @app.route('/azon/api/products/<int:product_id>', methods=['GET'])
 def get_product(product_id):
-    #aktif değil
+    #aktif edildi
     sonuc = postgreSQL.list_database()
     # print("sonuc['products'] :",sonuc['products'])
     # print("sonuc['products'][0] :",sonuc['products'][0])
