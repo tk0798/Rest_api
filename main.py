@@ -22,6 +22,7 @@ def get_products():
 def get_product(product_id):
     #aktif değil
     sonuc = postgreSQL.list_database()
+    print("sonuc :",sonuc)
     product = [product for product in sonuc if product['id']==product_id]
 
     for i in range(len(product)):
