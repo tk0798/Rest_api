@@ -28,9 +28,9 @@ def get_product(product_id):
     for productss in sonuc['products']:
         print("productss :",productss)
         print("type(productss) :",type(productss))
-        print("[productss]['kullanici_id'] :",[productss]['kullanici_id'])
+        print("[productss]['kullanici_id'] :",productss['kullanici_id'])
         print("int(product_id) :",int(product_id))
-        if int([productss]['kullanici_id'])==int(product_id):
+        if int(productss['kullanici_id'])==int(product_id):
 
             print("product id :",sonuc['products']['id'])
             print("product model_id :", sonuc['products']['model_id'])
