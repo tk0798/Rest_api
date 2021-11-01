@@ -25,26 +25,26 @@ def get_product(product_id):
     print("sonuc['products'] :",sonuc['products'])
     print("sonuc['products'][0] :",sonuc['products'][0])
     print("sonuc['products'][0]['kullanici_id'] :",sonuc['products'][0]['kullanici_id'])
-    product = [product for product in sonuc['products'] if product[0]['kullanici_id']==product_id]
+    for productss in sonuc['products']:
+        if sonuc['products'][productss]['kullanici_id']==product_id:
 
-    for i in range(len(product)):
-        print("product id :",product[i]['id'])
-        print("product model_id :", product[i]['model_id'])
-        print("product model_adi :", product[i]['model_adi'])
-        print("product longitude :", product[i]['longitude'])
-        print("product latitude :", product[i]['latitude'])
-        print("product toplam_adim :", product[i]['toplam_adim'])
-        print("product kalori :", product[i]['kalori'])
-        print("product oksijen :", product[i]['oksijen'])
-        print("product nabiz :", product[i]['nabiz'])
-        print("product kullanici_id :", product[i]['kullanici_id'])
-        print("product seri_no :", product[i]['seri_no'])
-        print("product yazilim_versiyon :", product[i]['yazilim_versiyon'])
-        print("product tarih :", product[i]['tarih'])
+            print("product id :",sonuc['products']['id'])
+            print("product model_id :", sonuc['products']['model_id'])
+            print("product model_adi :", sonuc['products']['model_adi'])
+            print("product longitude :", sonuc['products']['longitude'])
+            print("product latitude :", sonuc['products']['latitude'])
+            print("product toplam_adim :", sonuc['products']['toplam_adim'])
+            print("product kalori :", sonuc['products']['kalori'])
+            print("product oksijen :", sonuc['products']['oksijen'])
+            print("product nabiz :", sonuc['products']['nabiz'])
+            print("product kullanici_id :", sonuc['products']['kullanici_id'])
+            print("product seri_no :", sonuc['products']['seri_no'])
+            print("product yazilim_versiyon :", sonuc['products']['yazilim_versiyon'])
+            print("product tarih :", sonuc['products']['tarih'])
 
-    if len(product) == 0:
+    if len(sonuc['products'][productss]) == 0:
         return jsonify({'product': 'Not found'}), 404
-    return jsonify({'product': product})
+    return jsonify({'product': sonuc['products'][productss]})
 
 @app.route('/azon/api/products/', methods=['POST'])
 def create_product():
