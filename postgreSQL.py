@@ -4,7 +4,7 @@ def insert_local_database(kullanici_id, model_id, model_adi, longitude, latitude
     print("buraya kadar girdi")
     try:
         connection = psycopg2.connect(user = "postgres",
-                          password = "1998*k2005",
+                          password = "sifre",
                           host = "localhost",
                           port = "5432",
                           database = "deneme")
@@ -227,7 +227,7 @@ def delete_all_row_database():
 def delete_local_database(kullanici_id):
     try:
         db = psycopg2.connect(user="postgres",
-                                      password="1998*k2005",
+                                      password="sifre",
                                       host="localhost",
                                       port="5432",
                                       database="deneme"
