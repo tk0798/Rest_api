@@ -22,15 +22,15 @@ def get_products():
 def get_product(product_id):
     #aktif değil
     sonuc = postgreSQL.list_database()
-    print("sonuc['products'] :",sonuc['products'])
-    print("sonuc['products'][0] :",sonuc['products'][0])
-    print("sonuc['products'][0]['kullanici_id'] :",sonuc['products'][0]['kullanici_id'])
+    # print("sonuc['products'] :",sonuc['products'])
+    # print("sonuc['products'][0] :",sonuc['products'][0])
+    # print("sonuc['products'][0]['kullanici_id'] :",sonuc['products'][0]['kullanici_id'])
     productss = [productss for productss in sonuc['products'] if int(productss['kullanici_id'])==int(product_id)]
-    print("productss :",productss)
-    print("type(productss) :",type(productss))
-    print("productss['kullanici_id'] :",int(productss[0]['kullanici_id']))
-    print("int(product_id) :",int(product_id))
-    print("len(productss) :",len(productss))
+    # print("productss :",productss)
+    # print("type(productss) :",type(productss))
+    # print("productss['kullanici_id'] :",int(productss[0]['kullanici_id']))
+    # print("int(product_id) :",int(product_id))
+    # print("len(productss) :",len(productss))
     if len(productss) == 0:
         return jsonify({'product': 'Not found'}), 404
     else:
