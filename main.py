@@ -32,23 +32,23 @@ def get_product(product_id):
         print("int(product_id) :",int(product_id))
         if int(productss['kullanici_id'])==int(product_id):
 
-            print("product id :",sonuc['products']['id'])
-            print("product model_id :", sonuc['products']['model_id'])
-            print("product model_adi :", sonuc['products']['model_adi'])
-            print("product longitude :", sonuc['products']['longitude'])
-            print("product latitude :", sonuc['products']['latitude'])
-            print("product toplam_adim :", sonuc['products']['toplam_adim'])
-            print("product kalori :", sonuc['products']['kalori'])
-            print("product oksijen :", sonuc['products']['oksijen'])
-            print("product nabiz :", sonuc['products']['nabiz'])
-            print("product kullanici_id :", sonuc['products']['kullanici_id'])
-            print("product seri_no :", sonuc['products']['seri_no'])
-            print("product yazilim_versiyon :", sonuc['products']['yazilim_versiyon'])
-            print("product tarih :", sonuc['products']['tarih'])
-
-    if len(productss['kullanici_id']) == 0:
-        return jsonify({'product': 'Not found'}), 404
-    return jsonify({'product': productss})
+            print("product id :",productss['id'])
+            print("product model_id :", productss['model_id'])
+            print("product model_adi :", productss['model_adi'])
+            print("product longitude :", productss['longitude'])
+            print("product latitude :", productss['latitude'])
+            print("product toplam_adim :", productss['toplam_adim'])
+            print("product kalori :", productss['kalori'])
+            print("product oksijen :", productss['oksijen'])
+            print("product nabiz :", productss['nabiz'])
+            print("product kullanici_id :", productss['kullanici_id'])
+            print("product seri_no :", productss['seri_no'])
+            print("product yazilim_versiyon :", productss['yazilim_versiyon'])
+            print("product tarih :", productss['tarih'])
+        return jsonify({'product': productss})
+    # if len(productss['kullanici_id']) == 0:
+    #     return jsonify({'product': 'Not found'}), 404
+            
 
 @app.route('/azon/api/products/', methods=['POST'])
 def create_product():
